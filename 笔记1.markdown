@@ -1,0 +1,434 @@
+多行注释：
+    '''
+
+    '''
+
+三个双引号也可以输出内容，如：
+
+
+    name = """黑马程序员"""
+    print(name)
+    输出结果为：黑马程序员
+
+在输出结果里面包含单引号或双引号有以下解决方法：
+
+    name = '"LWX"'
+    print(name)
+    name = "'LWX'"
+    print(name)
+    name = "\"LWX\""
+    print(name)
+    name = '\'LWX\''
+    print(name)
+    \可以将引号转义
+
+用%完成字符串和数字的拼接：
+
+    num = 57
+    salary = 16781
+    message = 'Python大数据学科，北京%s期，毕业平均工资: %s' % (num, salary)
+    print(message)
+    输出结果为：Python大数据学科，北京57期，毕业平均工资: 16781
+多个变量占位，变量要用括号括起来，并按照占位的顺序填入
+eg:
+
+    name = 'LWX'
+    year = 2006
+    price = 19.99
+    message = '%s，成立于：%d，当日股价是:%f' %(name,year,price)
+    print(message)
+    输出结果为：LWX，成立于：2006，当日股价是:19.990000
+
+精度控制：
+
+    num = 11.345
+    print('数字11宽度限制7，精确到0.01,结果是：%7.2f' % num)
+    输出结果：  11.35
+
+f"内容{变量}"的格式来快速格式化
+eg:
+
+    name = 'LWX'
+    year = 2006
+    price = 19.99
+    print(f'我是{name},我成立于：{year},今天的股价是:{price}')
+
+循环语法：
+
+    while：
+    i = 0
+    while i < 100:
+        print('lwx')
+        i += 1
+
+用while循环猜数字：
+
+    import random
+    num = random.randint(1,100)
+    count = 1
+    guess = int(input('请输入你猜测的数字：'))
+    while guess != num:
+        if guess < num:
+            print('比num小')
+        else:
+            print('比num大')
+        count += 1
+        guess = int(input('请再猜一次：'))
+    print('恭喜猜中')
+    print(count)
+
+不换行：
+eg:
+
+    print('hello', end='')
+    print('world',end='')
+    制表符：\t:
+    print('hello\tworld')
+    print('itheima\tbest')
+    输出结果：
+    hello	world
+    itheima	best
+
+for循环：
+
+无法定义循环条件，格式：
+
+    for xx in xx
+    range(1,10)中不包括10，即为左闭右开区间
+
+函数的定义：
+
+
+    def 函数名(传入参数)：
+        函数体
+        return 返回值
+    变量 = 函数(参数)
+
+    def say_hi():
+        print('hello')
+    result = say_hi()
+    print(result)
+    print(type(result))
+    输出：
+        hello
+        None
+        <class 'NoneType'>
+
+函数体内部一般而言是局部变量，若想全局变量，可用global声明
+
+eg:
+
+    num = 200
+    def test():
+        global num
+        num = 100
+        print(num)
+
+
+
+列表：
+添加元素：
+
+    1.append:添加到最后，格式：list.append(内容)，只添加一个元素
+    2.extend:添加到最后，添加多个元素，格式：list.extend(内容)
+删除元素：
+
+    1.del 列表[下标]
+    2.列表.pop(下标)
+删除某元素在列表中的第一个匹配项：
+
+    列表.remove(元素)
+清空列表内容：
+
+    列表.clear()
+插入元素：
+
+    insert:列表.insert(元素)
+统计元素在列表中出现的次数：
+
+    列表.count(元素)
+查找指定元素在列表中的下标：
+
+    列表.index(元素)
+
+元组：（元组内的元素不可修改，但如果嵌套list，list中的元素可以修改）
+
+    1.定义元组变量：
+        变量名称 = (元素，元素，.......，元素)
+    2.定义空元组：
+        变量名称 = ()
+        或：变量名称 = tuple()
+        注：定义一个元组时，必须加“,”，eg:t2 = ('hello',)
+    3.元组嵌套：
+        t5 = (()，())
+    4.取出元素：单个：元组[] ；嵌套：元组[][]
+    5.index():查找下标
+        count():查找次数
+        len(元组)：计算元素个数
+    eg:
+        t = (1,2,['LWX','GJL'])
+        print(f't的内容：{t}')
+        t[2][0]='HYS'
+        t[2][1]='WSJ'
+        print(f't的内容：{t}')
+        输出结果：
+            t的内容：(1, 2, ['LWX', 'GJL'])
+            t的内容：(1, 2, ['HYS', 'WSJ'])
+
+字符串：
+
+    1.index:字符串.index()，查找下标
+    2.replace:字符串.replace(字符串1,字符串2) 替换
+    3.split:字符串.split(分隔符字符串)，字符串本身不变，会得到一个列表
+    eg:
+        my_str = 'hello world'
+        my_str_list = my_str.split(' ')
+        print(f'分割后的字符串:{my_str_list}')
+    输出结果：
+        分割后的字符串:['hello', 'world']
+    4.规整操作：字符串.strip()，去除前后内容
+        （1）不传参数，可以去除字符串前后空格
+        （2）传参数，去除参数。
+    5.出现次数：字符串.count(参数)
+
+序列：
+
+    1.切片：序列[起始下标：结束下标：步长]，结束下标不包括该元素，步长为N，跳过N-1个元素
+
+
+集合：不允许重复，乱序
+
+    1.定义：
+        变量名称 = {元素，元素，元素......，元素}
+        或：变量名称 = set()【定义空集合】
+    2.添加新元素：集合.add()
+    3.移除元素：集合.remove()
+    4.随机取出元素：集合.pop()
+    5.清空：集合.clear()
+    6.取两个集合差集：
+        set3 = set1.difference(set2)
+    7.消除差集：
+        set1.diffrence_update(set2)(结果返回set1)
+    8.合并集合：
+        集合1.union(集合2)【得到新集合，集合1、集合2不变】
+        set3 = set1.union(set2)
+    9.遍历：用for，集合不支持下标索引，因此不支持while循环。
+    
+字典：存储的元素是键值对【key不允许重复】
+
+    1.定义：{key:value,key:value,.......,key:value}
+    若是空字典，则直接：字典 = {}或 字典 = dic()
+    2.查找：字典[key]
+    3.字典可以嵌套：
+        eg:
+            stu_score = {
+                'lwx':{
+                    'Chinese':77,
+                    'math':66,
+                    'English':33
+                },
+                'gjl':{
+                    'Chinese':88,
+                    'math':86,
+                    'English':55
+                },
+                'ywc':{
+                    'Chinese':99,
+                    'math':96,
+                    'English':66
+                }
+            }
+    4.新增元素：字典[key]=value(此时的key不存在)，结果：字典被修改，新增了元素
+    5.更新元素：字典[key]=value(此时的key存在)
+    6.删除：字典.pop(key)【value可被接收】
+    7.清空：字典.clear()
+    8.获取全部key:字典.keys()
+总结：
+
+    1.获取最大值：max()
+    2.最小的元素：min()
+    3.容器通用排序功能：
+        顺序：sorted(容器)，结果变成列表对象。
+        倒序：sorted(容器,[reverse=True])
+    
+函数进阶：
+
+    1.接收多个返回值：
+    eg:
+        def test_return():
+            return 1,2
+        x,y = test_return()
+        print(x)
+        print(y)
+    输出结果：1
+             2
+    2.传参时位置参数必须在关键字参数前面。且默认值必须在最后
+    3.不定长传参：
+        ①位置传递：def user_info(*args)：
+        传进的所有参数都会被args变量收集，它会根据传进参数的位置组成一个元组，args时元组类型的位置传递
+        ②关键字传递：def user_infor(**kwargs)：
+        参数是“键=值”形式的情况下，所有的“键=值”都会被kwargs棘手，同时根据“键=值”组成字典。
+    4.函数作为参数传递：
+    eg:
+        def test(compute):
+            result = compute(1,2)
+            print(result)
+        def compute(x,y):
+            return x + y
+        test(compute)
+    结果：3
+    4.lambda：定义无名称函数，只能临时使用一次
+        1.定义：lambda 传入参数:函数体(一行代码)
+        eg:
+            def test(add):
+                result = add(1,2)
+                print(result)
+            def add(x,y):
+                return x + y
+            test(add)
+            test(lambda x,y:x+y)
+
+
+文件：
+
+    1.读取文件：
+        ①open函数，语法：open(name,mode,encoding)
+        ②模式：r：只读，w:写入，若文件存在原有内容会被删除，若不存在则建立，a:追加，写到原有内容之后
+        ③读操作相关方法：
+            read()方法：文件对象.read(num)，如果没有传入num，则读取全部。注意：会续接上一次读写文件的结尾处
+            readline()方法：一次读取一行内容
+    2.写文件：
+        ①f.write():文件写入
+        ②f.flush():内容刷新
+        
+处理异常方法：
+
+    1.基本语法
+    try:
+        可能发生错误的代码
+    except:
+        如果出现异常执行的代码
+    2.捕获制定异常：
+        try:
+            print(name)
+        except NameError as e:
+            print('name变量名称未定义错误')
+    3.捕获多个异常：
+        try:
+            xxxx
+        except (元素一，元素二，.....):
+            xxxxx
+    4.捕获所有异常：
+        try:
+            xxxx
+        except Exception as e:
+            xxxxx
+        else:
+            xxxx
+        finally:
+            xxxxx
+        注：finally是有无异常都会执行
+
+自定义模块：
+    1.创建一个python文件，并定义函数，随后在另一个文件中导入该文件
+
+json:
+
+    1.格式：{"key":xxx,"key":xxx,"key":xxx}或[{"key":xxx,"key":xxx,"key":xxx},{"key":xxx,"key":xxx,"key":xxx}]
+
+pyecharts:
+
+    1.构建柱形图将x轴和y轴翻转：bar.reversal_axis()
+
+列表排序方法：
+
+    1.函数：
+        my_list = [['a',33],['b',55],['c',11]]
+        my_list = [['a',33],['b',55],['c',11]]
+        def choose_sort_key(element):
+            return element[1]
+        my_list.sort(key=choose_sort_key,reverse=True)
+        print(my_list)
+
+类：
+
+    1.类的使用语法：
+        class 类名称：
+            类的属性（成员变量）
+            类的行为（成员方法）
+    2.创建类对象的语法：对象=类名称()
+    3.方法的定义：
+        def 方法名(self,形参1，形参2.....)：
+            方法体
+    4.属性赋值：构造时，将传入参数自动传递给__int__方法使用
+    eg:
+        class Student:
+            name = None
+            age = None
+            tel = None
+
+            def __init__(self,name,age,tel):
+                self.name = name
+                self.age = age
+                self.tel = tel
+                print('student类创建了一个对象')
+
+        stu = Student('LWX',18,'18349982307')
+    5.__str__返回字符串，
+        __lt__小于符号比较
+        __le__小于等于、大于等于判断
+        __eq__相等比较
+        eg:
+            class Student():
+                def __init__(self, name, age):
+                    self.name = name
+                    self.age = age
+
+                def __str__(self):
+                    return f'Student类对象,name :{self.name}, age:{self.age}'
+
+                def __lt__(self, other):
+                    return self.age < other.age 
+
+            stu1 = Student('LWX',18)
+            # print(stu1)
+            # print(str(stu1))
+            stu2 = Student('GJL',21)
+            print(stu1 < stu2)
+            print(stu1 > stu2)
+
+封装：
+
+    1.私有变量定义：以__开头。
+
+继承：
+
+    1.语法：class 类名(父类名)：
+                类具体内容
+    2.多继承：
+    class 类名(父类1，父类2，.......,父类N)：
+        类内容体
+    3.调用父类同名成员：
+        1.使用成员变量：父类名.成员变量
+        2.使用成员方法：父类名.成员方法(self)
+    4.使用super()调用：
+        1.使用成员变量：super()成员变量
+        2.使用成员方法：super()成员方法()
+
+类型注解：
+
+    1.为变量设置类型注解：
+        1.变量：类型
+        2.#type:类型
+    2.函数(方法)的类型注解：
+        1.def 函数方法名(形参名：类型，形参名：类型，......) ->返回值类型:
+            pass
+    
+Union类型：
+
+    1.导包：from typing import union
+    2.定义联合类型注解：Union[类型,......,类型]
+
+多态：
+
+    1.同样的行为，传入不同的对象，得到不同的状态。
